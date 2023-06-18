@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         binding.staticFiled.text = staticFiledFromJNI()
 
         javaToC()
+
+        //动态注册
+        Toast.makeText(this,"${loadAdd(1f,2f)}",Toast.LENGTH_LONG).show()
     }
 
     fun normalMethod(){
@@ -46,6 +49,8 @@ class MainActivity : AppCompatActivity() {
     external fun staticFiledFromJNI():String
 
     external fun javaToC()
+
+    external fun loadAdd(a:Float,b:Float):Float
 
     companion object {
         const val TAG = "MainActivity"
