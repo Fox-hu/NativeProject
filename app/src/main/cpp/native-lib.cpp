@@ -70,3 +70,15 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *unused) {
     }
     return JNI_VERSION_1_6;
 }
+
+
+JNIEXPORT void JNICALL JNI_OnUnload(JavaVM *vm, void *unused) {
+    JNIEnv *env;
+    if (vm->GetEnv((void **) &env, JNI_VERSION_1_6) != JNI_OK) {
+        return ;
+    }
+    jclass clazz = env->FindClass(NATIVE_CLASS_MAIN_ACTIVITY);
+    if(env->UnregisterNatives(clazz) != JNI_OK){
+        return ;
+    }
+}
