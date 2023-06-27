@@ -24,18 +24,20 @@ class MainActivity : AppCompatActivity() {
         // Example of a call to a native method
         binding.sampleText.text = stringFromJNI()
 
-        binding.filed.text = filedFromJNI()
+        filedFromJNI()
+        binding.filed.text = filed
 
-        binding.staticFiled.text = staticFiledFromJNI()
+        staticFiledFromJNI()
+        binding.staticFiled.text = staticFiled
 
         javaToC()
 
         //动态注册
-        Toast.makeText(this,"${loadAdd(1f,2f)}",Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "${loadAdd(1f, 2f)}", Toast.LENGTH_LONG).show()
     }
 
-    fun normalMethod(){
-        Log.i(TAG,"normal method invoke")
+    fun normalMethod() {
+        Log.i(TAG, "normal method invoke")
     }
 
     /**
@@ -44,17 +46,18 @@ class MainActivity : AppCompatActivity() {
      */
     external fun stringFromJNI(): String
 
-    external fun filedFromJNI():String
+    external fun filedFromJNI(): String
 
-    external fun staticFiledFromJNI():String
+    external fun staticFiledFromJNI(): String
 
     //c调用java的普通方法和静态方法
     external fun javaToC()
 
-    external fun loadAdd(a:Float,b:Float):Float
+    external fun loadAdd(a: Float, b: Float): Float
 
     companion object {
         const val TAG = "MainActivity"
+
         // Used to load the 'nativeproject' library on application startup.
         var staticFiled = "我是静态变量"
 
@@ -64,8 +67,8 @@ class MainActivity : AppCompatActivity() {
 
         //这里一定要加这个注解 否则jni调用就会非常的麻烦
         @JvmStatic
-        fun staticMethod(){
-            Log.i(TAG,"static method invoke")
+        fun staticMethod() {
+            Log.i(TAG, "static method invoke")
         }
     }
 
