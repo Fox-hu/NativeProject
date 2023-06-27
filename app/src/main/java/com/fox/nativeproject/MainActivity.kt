@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     external fun staticFiledFromJNI():String
 
+    //c调用java的普通方法和静态方法
     external fun javaToC()
 
     external fun loadAdd(a:Float,b:Float):Float
